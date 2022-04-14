@@ -9,8 +9,6 @@ import com.android.systemui.dagger.SystemUIModule;
 
 import co.aospa.android.systemui.columbus.ColumbusModule;
 import co.aospa.android.systemui.elmyra.ElmyraModule;
-import co.aospa.android.systemui.keyguard.AospaKeyguardSliceProvider;
-import co.aospa.android.systemui.smartspace.KeyguardSmartspaceController;
 
 import dagger.Subcomponent;
 
@@ -30,11 +28,4 @@ public interface AospaSysUIComponent extends SysUIComponent {
         AospaSysUIComponent build();
     }
 
-    /**
-     * Member injection into the supplied argument.
-     */
-    void inject(AospaKeyguardSliceProvider keyguardSliceProvider);
-
-    @SysUISingleton
-    KeyguardSmartspaceController createKeyguardSmartspaceController();
 }

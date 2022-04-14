@@ -31,11 +31,4 @@ public class AospaSystemUIFactory extends SystemUIFactory {
         return new BackGestureTfClassifierProviderGoogle(am, modelName);
     }
 
-    @Override
-    public void init(Context context, boolean fromTest) throws ExecutionException, InterruptedException {
-        super.init(context, fromTest);
-        if (shouldInitializeComponents()) {
-            ((AospaSysUIComponent) getSysUIComponent()).createKeyguardSmartspaceController();
-        }
-    }
 }

@@ -24,7 +24,6 @@ import androidx.annotation.Nullable;
 
 import co.aospa.android.systemui.AospaServices;
 import co.aospa.android.systemui.assist.AssistManagerGoogle;
-import co.aospa.android.systemui.smartspace.KeyguardSmartspaceController;
 
 import com.android.internal.logging.UiEventLogger;
 import com.android.internal.app.AssistUtils;
@@ -133,10 +132,6 @@ import com.google.android.systemui.assist.uihints.input.TouchActionRegion;
 import com.google.android.systemui.assist.uihints.input.TouchInsideRegion;
 import com.google.android.systemui.columbus.ColumbusServiceWrapper;
 import com.google.android.systemui.elmyra.ServiceConfigurationGoogle;
-import com.google.android.systemui.smartspace.BcSmartspaceDataProvider;
-import com.google.android.systemui.smartspace.KeyguardMediaViewController;
-import com.google.android.systemui.smartspace.KeyguardZenAlarmViewController;
-import com.google.android.systemui.smartspace.SmartSpaceController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -289,39 +284,6 @@ public abstract class AospaSystemUIModule {
     }
 
     // Google
-    @Provides
-    @SysUISingleton
-    static SmartSpaceController provideSmartSpaceController(Context context, KeyguardUpdateMonitor updateMonitor, Handler handler, AlarmManager am, DumpManager dm) {
-        return new SmartSpaceController(context, updateMonitor, handler, am, dm);
-    }
-
-    @Provides
-    @SysUISingleton
-    static KeyguardSmartspaceController provideKeyguardSmartspaceController(Context context, FeatureFlags featureFlags,
-            KeyguardZenAlarmViewController keyguardZenAlarmViewController, KeyguardMediaViewController keyguardMediaViewController) {
-        return new KeyguardSmartspaceController(context, featureFlags, keyguardZenAlarmViewController, keyguardMediaViewController);
-    }
-
-    @Provides
-    @SysUISingleton
-    static KeyguardZenAlarmViewController provideKeyguardZenAlarmViewController(Context context, BcSmartspaceDataPlugin bcSmartspaceDataPlugin, ZenModeController zenModeController,
-            AlarmManager alarmManager, NextAlarmController nextAlarmController, Handler handler) {
-        return new KeyguardZenAlarmViewController(context, bcSmartspaceDataPlugin, zenModeController, alarmManager, nextAlarmController, handler);
-    }
-
-    @Provides
-    @SysUISingleton
-    static KeyguardMediaViewController provideKeyguardMediaViewController(Context context, BcSmartspaceDataPlugin bcSmartspaceDataPlugin,
-            @Main DelayableExecutor delayableExecutor, NotificationMediaManager notificationMediaManager, BroadcastDispatcher broadcastDispatcher) {
-        return new KeyguardMediaViewController(context, bcSmartspaceDataPlugin, delayableExecutor, notificationMediaManager, broadcastDispatcher);
-    }
-
-    @Provides
-    @SysUISingleton
-    static BcSmartspaceDataPlugin provideBcSmartspaceDataPlugin() {
-        return new BcSmartspaceDataProvider();
-    }
-
      // AssistManagerGoogle
 
     @Binds
